@@ -1,0 +1,110 @@
+/* OurStory.css */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+
+.our-story {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #7c328b;
+    background-image: linear-gradient(#7c328b, #966e35);
+}
+
+.ourstory-image-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    margin-right: 30px;
+}
+
+.ourstory-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    font-size: 3vw;
+    margin: max(1rem, 3vw);
+    border: 0.35rem solid;
+    padding: 3vw;
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+    animation: borderRotate var(--d) linear infinite forwards;
+}
+
+.ourstory-content {
+    flex: 2;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 20px;
+    color: #ffffff;
+    margin-right: 20px;
+}
+
+.ourstory-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #f19618;
+    font-family: 'Great Vibes', cursive;
+    word-spacing: 15px;
+}
+
+.ourstory-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+   
+}
+
+@media (max-width: 768px) {
+    .our-story {
+        flex-direction: column;
+    }
+
+    .ourstory-content {
+        text-align: center;
+    }
+}
+
+@keyframes borderRotate {
+    100% {
+        --angle: 420deg;
+    }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:400");
+
+* {
+    box-sizing: border-box;
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 90deg;
+    inherits: true;
+}
+
+@property --gradX {
+    syntax: '<percentage>';
+    initial-value: 50%;
+    inherits: true;
+}
+
+@property --gradY {
+    syntax: '<percentage>';
+    initial-value: 0%;
+    inherits: true;
+}
+
+
+
+p {
+    margin: 0;
+}
+
+:root {
+    --d: 2500ms;
+    --angle: 90deg;
+    --gradX: 100%;
+    --gradY: 50%;
+    --c1: rgba(168, 239, 255, 1);
+    --c2: rgba(168, 239, 255, 0.1);
+}

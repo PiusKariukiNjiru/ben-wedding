@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(to bottom, rgba(149, 93, 2, 0.3), rgba(0,0,0, 0.7)), url('./beautiful-wedding-garden.webp') center center/cover no-repeat;
+    
+  }
+  
+   
+  .circle {
+    width: 45%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: #7c328b;
+    display: flex;
+    opacity: 0.9;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    
+
+  }
+  
+  .dotted-border {
+    position: absolute;
+    border: 2px dashed white;
+    border-radius: 50%;
+    animation: rotate 40s linear infinite;
+    width: 93%;
+    height: 93%;
+    opacity: 0.7;
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .content {
+    color: white;
+    text-align: center;
+    z-index: 1;
+    padding: 10px;
+  }
+  
+  .date, .message {
+    font-size: 2vw;
+  }
+  
+  .names {
+    font-size: 4.7vw;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .image-container {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .additional-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .additional-image img {
+    width: 100%;
+  }
+  .countdown {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .countdown-item {
+    margin: 5px;
+    text-align: center;
+  }
+  
+  .countdown-value {
+    font-size: 2.5vw;
+    font-weight: bold;
+    color: #f19618;
+  }
+  
+  .countdown-label {
+    font-size: 1.5vw;
+  }
+  
+  /* Responsive Styles */
+  
+  
+  @media (max-width: 600px) {
+    .app-container {
+      flex-direction: column;
+      align-items: center;
+
+    }
+  
+    .circle, .image-container {
+      width: 90%;
+      max-width: 300px;
+    }
+  
+    .circle {
+      margin-bottom: 20px;
+    }
+  
+    .date, .message {
+      font-size: 3.2vw;
+    }
+  
+    .names {
+      font-size: 7vw;
+    }
+  
+    .countdown-value {
+      font-size: 6vw;
+    }
+  
+    .countdown-label {
+      font-size: 3vw;
+    }
+  }
+  

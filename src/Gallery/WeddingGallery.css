@@ -1,0 +1,68 @@
+/* SimpleGallery.css */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+
+.simple-gallery {
+    padding: 20px;
+    text-align: center;
+    background-color: #180f01;
+  }
+
+  .gallery-flower{
+    margin-top: 20px;
+  }
+  
+  .simple-gallery h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    word-spacing: 15px;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .gallery-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .zoom-image {
+    max-width: 90%;
+    max-height: 90%;
+    transition: transform 0.3s ease;
+  }
+  
+  .zoom-image:hover {
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  }
+  

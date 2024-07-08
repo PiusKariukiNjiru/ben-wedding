@@ -1,0 +1,71 @@
+/* RSVPForm.css */
+
+.rsvp-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(131,67,143, 0.1), rgba(131,67,143, 0.7)), url('./flower-image.png') center center/cover no-repeat;
+
+  position: relative;
+  padding: 20px;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(131, 67, 143, 0.8); /* Adjust the overlay color and opacity as needed */
+  z-index: -1;
+}
+
+.rsvp-form {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background for the form */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  z-index: 1;
+}
+
+.form-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+}
+
+.rsvp-button {
+  background-color: #800080;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.rsvp-button:hover {
+  background-color: #590059;
+  transform: scale(1.05);
+}
