@@ -5,9 +5,9 @@
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-  }
-  
-  .scroll-button {
+}
+
+.scroll-button {
     background-color: #800080;
     color: white;
     border: none;
@@ -18,10 +18,22 @@
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .scroll-button:hover {
+    padding-bottom: 5px;
+}
+
+.scroll-button:hover {
     background-color: #590059;
     transform: scale(1.1);
-  }
-  
+}
+
+
+
+@media (max-width: 480px) {
+    .scroll-button {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        padding-bottom: 5px;
+
+    }
+}

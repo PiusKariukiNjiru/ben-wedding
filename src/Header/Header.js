@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import logoImage from './ben-weds-purity-.png';
 
@@ -8,6 +9,10 @@ const Header = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -36,12 +41,13 @@ const Header = () => {
       </div>
       <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
         <ul>
-          <li><a href="#our-story" className={activeLink === 'our-story' ? 'active' : ''}>Our Story</a></li>
-          <li><a href="#schedule" className={activeLink === 'schedule' ? 'active' : ''}>Wedding Venue</a></li>
-          <li><a href="#simple-gallery" className={activeLink === 'simple-gallery' ? 'active' : ''}>Gallery</a></li>
-          <li><a href="#guest-book" className={activeLink === 'guest-book' ? 'active' : ''}>Guest Book</a></li>
-          <li><a href="#wedding-location" className={activeLink === 'wedding-location' ? 'active' : ''}>Location</a></li>
-          <li><a href="#rsvp" className={activeLink === 'rsvp' ? 'active' : ''} >💗 Gift</a></li>
+          <li><a href="#our-story" className={activeLink === 'our-story' ? 'active' : ''} onClick={closeMenu}>Our Story</a></li>
+          <li><a href="#schedule" className={activeLink === 'schedule' ? 'active' : ''} onClick={closeMenu}>Wedding Venue</a></li>
+          <li><a href="#simple-gallery" className={activeLink === 'simple-gallery' ? 'active' : ''} onClick={closeMenu}>Gallery</a></li>
+          <li><a href="#guest-book" className={activeLink === 'guest-book' ? 'active' : ''} onClick={closeMenu}>Guest Book</a></li>
+          <li><a href="#wedding-location" className={activeLink === 'wedding-location' ? 'active' : ''} onClick={closeMenu}>Google Map</a></li>
+          <li><a href="#rsvp" className={activeLink === 'rsvp' ? 'active' : ''} onClick={closeMenu}>💗 Gift</a></li>
+          <li className='watchlive'><Link to="/watch-live" className={activeLink === 'watch-live' ? 'active' : ''} onClick={closeMenu}>Watch Live</Link></li>
         </ul>
       </nav>
       <button className="menu-toggle" onClick={toggleMenu}>

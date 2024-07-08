@@ -1,6 +1,6 @@
 import React from 'react';
 import './OurStory.css';
-import image from './ben-purie.png'; // Update this path to your image file
+import image from './memories4-final.png'; // Update this path to your image file
 import flower from './section_tittle_flowre.webp';
 
 const OurStory = () => {

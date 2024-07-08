@@ -21,3 +21,36 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Database
+database.sqlite
+
+# Build files
+dist/
+build/

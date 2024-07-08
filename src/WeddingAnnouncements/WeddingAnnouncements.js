@@ -51,8 +51,10 @@ const WeddingAnnouncements = () => {
               <CountdownItem value={timeLeft.minutes} label="Minutes" />
               <CountdownItem value={timeLeft.seconds} label="Seconds" />
             </div>
+            
           </div>
         </div>
+
         <div className="image-container">
           <img src={benImage} alt="Ben Purie" className="additional-image" />
         </div>

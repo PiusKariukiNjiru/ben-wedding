@@ -6,7 +6,6 @@
   justify-content: center;
   height: 100vh;
   background: linear-gradient(to bottom, rgba(131,67,143, 0.1), rgba(131,67,143, 0.7)), url('./flower-image.png') center center/cover no-repeat;
-
   position: relative;
   padding: 20px;
 }
@@ -68,4 +67,21 @@
 .rsvp-button:hover {
   background-color: #590059;
   transform: scale(1.05);
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.total-guests {
+  margin-top: 20px;
+  text-align: center;
 }
