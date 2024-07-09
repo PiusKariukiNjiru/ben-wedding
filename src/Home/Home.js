@@ -9,6 +9,7 @@ import WeddingLocation from '../WeddingLocation/WeddingLocation';
 import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton';
 import Footer from '../Footer/Footer';
 import withScrollAnimation from '../withScrollAnimation/withScrollAnimation';
+import Header from '../Header/Header';
 
 const AnimatedWeddingAnnouncements = withScrollAnimation(WeddingAnnouncements);
 const AnimatedOurStory = withScrollAnimation(OurStory);
@@ -19,10 +20,11 @@ const AnimatedRSVPForm = withScrollAnimation(RSVPForm);
 const AnimatedWeddingLocation = withScrollAnimation(WeddingLocation);
 const AnimatedFooter = withScrollAnimation(Footer);
 
+
 function Home() {
   return (
     <div className="App">
-      
+      <Header />
       <AnimatedWeddingAnnouncements />
       <AnimatedOurStory />
       <AnimatedSchedule />
