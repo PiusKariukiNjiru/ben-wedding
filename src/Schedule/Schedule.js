@@ -24,7 +24,7 @@ const Schedule = () => {
       title: 'Reception',
       date: 'August 17, 2024',
       time: '2.00 PM - 6:00 PM',
-      location: 'Will be updated after confirmation 😊',
+      location: 'Ark school ground Mwenendega -Runyenjes',
       image: ReceptionImage
     }
   ];
