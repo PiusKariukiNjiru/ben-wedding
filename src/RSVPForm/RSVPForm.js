@@ -56,7 +56,7 @@ const RSVPForm = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/rsvp', {
+      const response = await fetch('https://benwedspurity-77d50fa67abc.herokuapp.com/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const RSVPForm = () => {
         setFormData({ name: '', phone: '', guests: '1', message: '' });
 
         // Update total guests after submitting
-        const response = await fetch('http://localhost:5000/total-guests');
+        const response = await fetch('https://benwedspurity-77d50fa67abc.herokuapp.com/total-guests');
         const data = await response.json();
         setTotalGuests(data.totalGuests);
         setHasSubmitted(true);
