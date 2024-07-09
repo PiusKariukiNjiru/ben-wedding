@@ -16,7 +16,7 @@ const RSVPForm = () => {
   useEffect(() => {
     const fetchTotalGuests = async () => {
       try {
-        const response = await fetch('http://localhost:5000/total-guests');
+        const response = await fetch('https://benwedspurity-77d50fa67abc.herokuapp.com/total-guests');
         const data = await response.json();
         setTotalGuests(data.totalGuests);
       } catch (error) {
@@ -67,7 +67,6 @@ const RSVPForm = () => {
         setSuccessMessage('RSVP sent successfully');
         setFormData({ name: '', phone: '', guests: '1', message: '' });
 
-        // Update total guests after submitting
         const response = await fetch('https://benwedspurity-77d50fa67abc.herokuapp.com/total-guests');
         const data = await response.json();
         setTotalGuests(data.totalGuests);
@@ -138,11 +137,10 @@ const RSVPForm = () => {
         <button type="submit" className="rsvp-button">
           R.S.V.P
         </button>
-        <div className="total-guests">
-          <h2>Total Guests Attending: {totalGuests}</h2>
-        </div>
       </form>
-      
+      <div className="total-guests">
+        <h2>Total Guests Attending: {totalGuests}</h2>
+      </div>
     </div>
   );
 };
