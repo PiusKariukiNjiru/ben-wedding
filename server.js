@@ -1,13 +1,13 @@
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path');
 require('dotenv').config();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,9 +35,33 @@ const formatRSVPDetailsToHTML = (rsvpDetails) => {
   `;
 };
 
+// Path to the guests.json file
+const guestsFilePath = path.join(__dirname, 'guests.json');
+
+// Read guests count from the file
+const readGuestsCount = () => {
+  try {
+    const data = fs.readFileSync(guestsFilePath, 'utf8');
+    const guests = JSON.parse(data);
+    return guests.count;
+  } catch (error) {
+    return 0;
+  }
+};
+
+// Write guests count to the file
+const writeGuestsCount = (count) => {
+  const data = JSON.stringify({ count }, null, 2);
+  fs.writeFileSync(guestsFilePath, data, 'utf8');
+};
+
+// Initialize guests.json if it doesn't exist
+if (!fs.existsSync(guestsFilePath)) {
+  writeGuestsCount(0);
+}
+
 // API Route to handle RSVP form submission
 app.post('/submit-rsvp', (req, res) => {
-  console.log('Received RSVP form submission:', req.body);
   const { name, phone, guests, message } = req.body;
 
   const mailOptions = {
@@ -47,17 +71,24 @@ app.post('/submit-rsvp', (req, res) => {
     html: formatRSVPDetailsToHTML({ name, phone, guests, message }),
   };
 
-  console.log('Attempting to send email with options:', mailOptions);
-
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error);
       res.status(500).send('Error sending email');
     } else {
-      console.log('Email sent:', info.response);
+      // Update the guests count
+      let currentCount = readGuestsCount();
+      currentCount += parseInt(guests, 10);
+      writeGuestsCount(currentCount);
+
       res.status(200).send('RSVP sent successfully');
     }
   });
+});
+
+// Endpoint to get the current guests count
+app.get('/guests-count', (req, res) => {
+  const count = readGuestsCount();
+  res.json({ count });
 });
 
 // Serve the React app
