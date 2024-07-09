@@ -42,9 +42,10 @@ const images = [
   { src: memories18, alt: 'Image 18' },
 ];
 
-const SimpleGallery = () => {
+const WeddingGallery = () => {
   const [zoomImage, setZoomImage] = useState(null);
-  const [showAll, setShowAll] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const imagesPerPage = 12;
 
   const handleImageClick = (src) => {
     setZoomImage(src);
@@ -54,41 +55,53 @@ const SimpleGallery = () => {
     setZoomImage(null);
   };
 
-  const toggleShowAll = () => {
-    setShowAll(!showAll);
+  const handleNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(images.length / imagesPerPage)));
   };
 
-  const displayedImages = showAll ? images : images.slice(0, 10);
+  const handlePrevPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const indexOfLastImage = currentPage * imagesPerPage;
+  const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+  const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
 
   return (
     <div className="simple-gallery" id="simple-gallery">
-      <img src={flower} alt="flower" className="gallery-flower" />
+      <img src={flower} alt="Flower" className="gallery-flower" />
       <h2>Our Memories</h2>
       <div className="gallery-grid">
-        {displayedImages.map((image, index) => (
+        {currentImages.map((image, index) => (
           <img
             key={index}
             src={image.src}
             alt={image.alt}
             onClick={() => handleImageClick(image.src)}
             className="gallery-image"
+            loading="lazy"
+            aria-hidden="true"
           />
         ))}
       </div>
-      {images.length > 10 && (
-        <>
-          <button onClick={toggleShowAll} className="see-more-button">
-            {showAll ? 'See Less' : 'See More...'}
-          </button>
-          {showAll && (
-            <p className="gallery-update-message">
-              📢 We will update this gallery with our wedding photos, so be sure to check back after the wedding. 🥰
-            </p>
-          )}
-        </>
-      )}
+      <div className="pagination">
+        <button onClick={handlePrevPage} disabled={currentPage === 1} className="pagination-button">
+          Previous
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === Math.ceil(images.length / imagesPerPage)}
+          className="pagination-button"
+        >
+          Next
+        </button>
+        
+      </div>
+      <p className="gallery-update-message">
+          📢 We will update this gallery with our wedding photos, so be sure to check back after the wedding. 🥰
+      </p>
       {zoomImage && (
-        <div className="zoom-overlay" onClick={closeZoom}>
+        <div className="zoom-overlay" onClick={closeZoom} role="dialog" aria-modal="true">
           <img src={zoomImage} alt="Zoomed" className="zoom-image" />
         </div>
       )}
@@ -96,4 +109,4 @@ const SimpleGallery = () => {
   );
 };
 
-export default SimpleGallery;
+export default WeddingGallery;

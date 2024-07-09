@@ -1,93 +1,145 @@
-/* SimpleGallery.css */
+/* WeddingGallery.css */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
 
+:root {
+  --background-color: #180f01;
+  --text-color: #ffffff;
+  --highlight-color: #9e0694;
+  --highlight-hover-color: #d6a73a;
+  --font-family: 'Playfair Display', serif;
+  --heading-font: 'Great Vibes', cursive;
+  --spacing: 20px;
+  --border-radius: 50px;
+}
+
 .simple-gallery {
-    padding: 20px;
-    text-align: center;
-    background-color: #180f01;
-  }
+  padding: var(--spacing);
+  text-align: center;
+  background-color: var(--background-color);
+}
 
-  .gallery-flower{
-    margin-top: 20px;
-  }
-  
-  .simple-gallery h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    color: white;
-    font-family: 'Great Vibes', cursive;
-    word-spacing: 15px;
-  }
-  
+.gallery-flower {
+  margin-top: var(--spacing);
+}
+
+.simple-gallery h2 {
+  font-size: 2.5em;
+  margin: 10px 0 var(--spacing);
+  color: var(--text-color);
+  font-family: var(--heading-font);
+  word-spacing: 15px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.zoom-image {
+  max-width: 90%;
+  max-height: 90%;
+  transition: transform 0.3s ease;
+}
+
+.zoom-image:hover {
+  transform: scale(1.05);
+}
+
+.gallery-update-message {
+  text-align: center;
+  margin-top: var(--spacing);
+  font-size: 1.1em;
+  color: #ccb8b8;
+}
+
+
+.see-more-button {
+  display: block;
+  margin: var(--spacing) auto;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: var(--border-radius);
+}
+
+.see-more-button:hover {
+  background-color: var(--highlight-hover-color);
+}
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing);
+}
+
+.pagination-button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 1em;
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: var(--border-radius);
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: var(--highlight-hover-color);
+}
+
+
+
+
+
+@media (max-width: 768px) {
   .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
-  
-  .gallery-image {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .gallery-image:hover {
-    transform: scale(1.05);
-  }
-  
-  .zoom-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .zoom-image {
-    max-width: 90%;
-    max-height: 90%;
-    transition: transform 0.3s ease;
-  }
-  
-  .zoom-image:hover {
-    transform: scale(1.05);
-  }
+}
 
-  .gallery-update-message {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.1em;
-    color: #ccb8b8;
+
+
+
+@media (max-width: 400px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   }
-  
-  
-  @media (max-width: 768px) {
-    .gallery-grid {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-  }
-  
-  .see-more-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #9e0694;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 50px;
-  }
-  
-  .see-more-button:hover {
-    background-color: #d6a73a;
-  }
-  
+}
