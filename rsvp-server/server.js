@@ -51,21 +51,6 @@ app.post('/rsvp', async (req, res) => {
   }
 });
 
-// API endpoint to reset RSVPs
-app.delete('/reset-rsvps', (req, res) => {
-  const { secret } = req.body;
-
-  if (secret !== process.env.RESET_SECRET) {
-    return res.status(403).send('Forbidden: Invalid secret key');
-  }
-
-  try {
-    rsvps = []; // Clear all RSVPs
-    res.status(200).send('RSVPs have been reset');
-  } catch (error) {
-    res.status(500).send(error.toString());
-  }
-});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

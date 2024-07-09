@@ -35,7 +35,7 @@ const RSVPForm = () => {
     }
 
     try {
-      const response = await fetch('https://benwedspurity-77d50fa67abc.herokuapp.com/rsvp', {
+      const response = await fetch('/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
