@@ -19,7 +19,7 @@ const RSVPForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
@@ -34,9 +34,25 @@ const RSVPForm = () => {
       return;
     }
 
-    // Display success message and reset form
-    setSuccessMessage('RSVP sent successfully');
-    setFormData({ name: '', phone: '', guests: '1', message: '' });
+    try {
+      const response = await fetch('/submit-rsvp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSuccessMessage('RSVP sent successfully');
+        setFormData({ name: '', phone: '', guests: '1', message: '' });
+      } else {
+        setErrorMessage('Error sending RSVP. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMessage('Error sending RSVP. Please try again.');
+    }
   };
 
   return (
