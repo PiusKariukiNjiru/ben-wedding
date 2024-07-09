@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './RSVPForm.css';
 
 const RSVPForm = () => {
@@ -8,24 +8,8 @@ const RSVPForm = () => {
     guests: '1',
     message: '',
   });
-  const [totalGuests, setTotalGuests] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const [hasSubmitted, setHasSubmitted] = useState(false);
-
-  useEffect(() => {
-    const fetchTotalGuests = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/total-guests');
-        const data = await response.json();
-        setTotalGuests(data.totalGuests);
-      } catch (error) {
-        console.error('Error fetching total guests:', error);
-      }
-    };
-
-    fetchTotalGuests();
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,11 +24,6 @@ const RSVPForm = () => {
     setErrorMessage('');
     setSuccessMessage('');
 
-    if (hasSubmitted) {
-      setErrorMessage('You have already submitted an RSVP.');
-      return;
-    }
-
     if (!formData.name || !formData.phone || !formData.guests || !formData.message) {
       setErrorMessage('All fields are required.');
       return;
@@ -56,7 +35,7 @@ const RSVPForm = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/rsvp', {
+      const response = await fetch('https://benwedspurity-77d50fa67abc.herokuapp.com/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,12 +45,6 @@ const RSVPForm = () => {
       if (response.ok) {
         setSuccessMessage('RSVP sent successfully');
         setFormData({ name: '', phone: '', guests: '1', message: '' });
-
-        // Update total guests after submitting
-        const response = await fetch('http://localhost:5000/total-guests');
-        const data = await response.json();
-        setTotalGuests(data.totalGuests);
-        setHasSubmitted(true);
       } else {
         const errorText = await response.text();
         setErrorMessage(errorText);
@@ -138,11 +111,7 @@ const RSVPForm = () => {
         <button type="submit" className="rsvp-button">
           R.S.V.P
         </button>
-        <div className="total-guests">
-          <h2>Total Guests Attending: {totalGuests}</h2>
-        </div>
       </form>
-      
     </div>
   );
 };

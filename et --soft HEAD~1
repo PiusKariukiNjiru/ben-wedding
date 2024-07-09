@@ -1,0 +1,47 @@
+[33mcommit e40fb4fefca81b89866c260669fe0b4cfce47dac[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: PiusKariukiNjiru <engkarishpius10@gmail.com>
+Date:   Tue Jul 9 04:39:05 2024 +0300
+
+    v
+
+[33mcommit 24d4b9193194b47bdc94dc4b2d2c195fb02c0787[m[33m ([m[1;31morigin/main[m[33m, [m[1;31mheroku/main[m[33m)[m
+Author: PiusKariukiNjiru <engkarishpius10@gmail.com>
+Date:   Tue Jul 9 03:45:44 2024 +0300
+
+    Fix Backend
+
+[33mcommit cccac303a037547b39028bf77757611e37d51ce8[m
+Author: PiusKariukiNjiru <engkarishpius10@gmail.com>
+Date:   Tue Jul 9 03:29:28 2024 +0300
+
+    Fix backend endpoints and update frontend URLs
+
+[33mcommit e148c627d168a7d0a25c816facb820e2225b1b13[m
+Author: PiusKariukiNjiru <engkarishpius10@gmail.com>
+Date:   Tue Jul 9 03:05:29 2024 +0300
+
+    Updated frontend to use Heroku backend URL
+
+[33mcommit a894a34d12bbb176a47ac39f4e82c5dc31fa398b[m
+Author: PiusKariukiNjiru <engkarishpius10@gmail.com>
+Date:   Tue Jul 9 02:15:39 2024 +0300
+
+    Update
+
+[33mcommit ab64584d0f52262fab1b40089179018fcf92add3[m
+Author: PiusKariukiNjiru <engkarishpius10@gmail.com>
+Date:   Mon Jul 8 17:16:12 2024 +0300
+
+    Update Home component and other components
+
+[33mcommit b2b67f092c1a11cff58fb431b4c022cea45f7296[m
+Author: PiusKariukiNjiru <engkarishpius10@gmail.com>
+Date:   Mon Jul 8 16:43:05 2024 +0300
+
+    Update Home component and other components
+
+[33mcommit fab53fdaa166a03f6365cbc7fcebc29c1302f8dd[m
+Author: PiusKariukiNjiru <engkarishpius10@gmail.com>
+Date:   Sat Jul 6 13:21:16 2024 +0300
+
+    Initialize project using Create React App
