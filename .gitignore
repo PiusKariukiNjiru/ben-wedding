@@ -54,3 +54,5 @@ database.sqlite
 # Build files
 dist/
 build/
+
+#build

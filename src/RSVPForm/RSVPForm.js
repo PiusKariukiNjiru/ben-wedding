@@ -30,7 +30,7 @@ const RSVPForm = () => {
     }
 
     if (!/^\d{10}$/.test(formData.phone)) {
-      setErrorMessage('Phone number must be exactly 10 digits.');
+      setErrorMessage('Phone number must have 10 digits.');
       return;
     }
 
@@ -77,7 +77,7 @@ const RSVPForm = () => {
           <input
             type="text"
             name="phone"
-            placeholder="Phone Number"
+            placeholder="e.g. 0741457431"
             className="form-control"
             value={formData.phone}
             onChange={handleChange}
@@ -101,7 +101,7 @@ const RSVPForm = () => {
         <div className="form-group">
           <textarea
             name="message"
-            placeholder="Your Message"
+            placeholder="I will be attending"
             className="form-control"
             value={formData.message}
             onChange={handleChange}
