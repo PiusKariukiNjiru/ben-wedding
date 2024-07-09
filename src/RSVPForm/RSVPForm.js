@@ -56,7 +56,7 @@ const RSVPForm = () => {
     }
 
     try {
-      const response = await fetch('/rsvp', {
+      const response = await fetch('http://localhost:5000/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const RSVPForm = () => {
         setFormData({ name: '', phone: '', guests: '1', message: '' });
 
         // Update total guests after submitting
-        const response = await fetch('/total-guests');
+        const response = await fetch('http://localhost:5000/total-guests');
         const data = await response.json();
         setTotalGuests(data.totalGuests);
         setHasSubmitted(true);
