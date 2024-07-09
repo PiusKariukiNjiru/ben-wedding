@@ -2,6 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -10,6 +11,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
@@ -54,6 +58,11 @@ app.post('/submit-rsvp', (req, res) => {
       res.status(200).send('RSVP sent successfully');
     }
   });
+});
+
+// Serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // Start the server
