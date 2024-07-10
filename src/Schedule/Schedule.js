@@ -3,9 +3,18 @@ import './Schedule.css';
 import rehearsalDinnerImage from './Rehaersal-dinner.png'; // Update this path to your images
 import ceremonyImage from './the-ceremony.jpeg';
 import ReceptionImage from './Reception.jpg';
+import PreweddingImage from './prewedding.jpg';
 
 const Schedule = () => {
   const events = [
+
+    {
+      title: 'Pre-Wedding',
+      date: 'July 27, 2024',
+      time: '2:00 PM - 6:00 PM',
+      location: 'Full Gospel Churches of Kenya, Runyenjes',
+      image: PreweddingImage
+    },
     {
       title: 'Rehearsal Dinner',
       date: 'August 16, 2024',
@@ -13,6 +22,7 @@ const Schedule = () => {
       location: 'Full Gospel Churches of Kenya, Runyenjes',
       image: rehearsalDinnerImage
     },
+   
     {
       title: 'The Ceremony',
       date: 'August 17, 2024',
@@ -24,7 +34,7 @@ const Schedule = () => {
       title: 'Reception',
       date: 'August 17, 2024',
       time: '2.00 PM - 6:00 PM',
-      location: 'Ark school ground Mwenendega -Runyenjes',
+      location: 'Ark School Ground Mwenendega -Runyenjes',
       image: ReceptionImage
     }
   ];
