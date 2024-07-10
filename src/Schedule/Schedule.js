@@ -10,7 +10,7 @@ const Schedule = () => {
 
     {
       title: 'Pre-Wedding',
-      date: 'July 27, 2024',
+      date: 'July 28, 2024',
       time: '2:00 PM - 6:00 PM',
       location: 'Full Gospel Churches of Kenya, Runyenjes',
       image: PreweddingImage
