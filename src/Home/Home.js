@@ -10,6 +10,7 @@ import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton';
 import Footer from '../Footer/Footer';
 import withScrollAnimation from '../withScrollAnimation/withScrollAnimation';
 import Header from '../Header/Header';
+import MpesaPaymentForm from '../Mpesa/MpesaPaymentForm';
 
 const AnimatedWeddingAnnouncements = withScrollAnimation(WeddingAnnouncements);
 const AnimatedOurStory = withScrollAnimation(OurStory);
@@ -33,6 +34,7 @@ function Home() {
       <AnimatedRSVPForm />
       <AnimatedWeddingLocation />
       <ScrollToTopButton />
+      <MpesaPaymentForm />
       <AnimatedFooter />
     </div>
   );
