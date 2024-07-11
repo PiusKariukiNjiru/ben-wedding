@@ -4,7 +4,6 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const axios = require('axios');
 require('dotenv').config();
 
 const app = express();
@@ -92,69 +91,6 @@ app.get('/guests-count', (req, res) => {
   res.json({ count });
 });
 
-// New route to handle M-Pesa STK Push payment initiation
-app.post('/mpesa/stkpush', async (req, res) => {
-  const { phoneNumber, amount } = req.body;
-
-  // Generate the access token
-  const getToken = async () => {
-    const response = await axios.get('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
-      auth: {
-        username: process.env.MPESA_CONSUMER_KEY,
-        password: process.env.MPESA_CONSUMER_SECRET
-      }
-    });
-    return response.data.access_token;
-  };
-
-  try {
-    const token = await getToken();
-    const timestamp = new Date().toISOString().replace(/[-T:.Z]/g, '').slice(0, 14);
-    const password = Buffer.from(`${process.env.MPESA_SHORTCODE}${process.env.MPESA_PASSKEY}${timestamp}`).toString('base64');
-
-    const requestBody = {
-      BusinessShortCode: process.env.MPESA_SHORTCODE,
-      Password: password,
-      Timestamp: timestamp,
-      TransactionType: "CustomerPayBillOnline",
-      Amount: amount,
-      PartyA: phoneNumber,
-      PartyB: process.env.MPESA_SHORTCODE,
-      PhoneNumber: phoneNumber,
-      CallBackURL: `${process.env.BASE_URL}/mpesa/callback`,
-      AccountReference: "WeddingPayment",
-      TransactionDesc: "Payment for wedding"
-    };
-
-    const response = await axios.post('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest', requestBody, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).send('Error initiating payment');
-  }
-});
-
-// Callback URL to handle M-Pesa responses
-app.post('/mpesa/callback', (req, res) => {
-  const { Body: { stkCallback } } = req.body;
-  const { MerchantRequestID, CheckoutRequestID, ResultCode, ResultDesc, CallbackMetadata } = stkCallback;
-
-  // Process the callback data as needed
-  if (ResultCode === 0) {
-    // Payment was successful, you can store the transaction details in your database
-    console.log('Payment successful:', CallbackMetadata);
-  } else {
-    // Payment failed, handle accordingly
-    console.log('Payment failed:', ResultDesc);
-  }
-
-  res.status(200).send('Callback received');
-});
-
 // Serve the React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
@@ -165,3 +101,5 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
